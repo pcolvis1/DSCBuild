@@ -4,7 +4,7 @@ Configuration DSCBuild {
     Import-DscResource -ModuleName SecurityPolicyDSC 
     #Import-DscResource -ModuleName PSDscResources
 
-    Node @('CIM-APXTEST','CIM-IIS2','CIM-DSCBUILD') {
+    Node @(#hostname of machine goes here) {
         #####################################################
         # Ensure SMB Encryption is enabled.
         #####################################################
@@ -100,7 +100,7 @@ Configuration DSCBuild {
 
     }
 		
-	Node @('CIM-APXTEST','CIM-IIS2','CIM-DSCBUILD') {
+	Node @(#hostname of machine goes here) {
 		#WindowsHardening
         Registry 'EnhancedAntiSpoofing' {
             Ensure    = 'Present'
@@ -538,7 +538,7 @@ Configuration DSCBuild {
 		}
 		Registry 'PCT1.0Client' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\PCT 1.0\Client\'
+			Key       = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\PCT 1.0\Client\'
 			ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '0'
@@ -552,14 +552,14 @@ Configuration DSCBuild {
 		}
 		Registry 'SSL2.0Client' {
 			Ensure    = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 2.0\Client\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 2.0\Client\'
 			ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '0'
 		}
 		Registry 'SSL3.0Client' {
 			Ensure    = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Client\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Client\'
 			ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '0'
@@ -580,35 +580,35 @@ Configuration DSCBuild {
 		}
 		Registry 'TLS1.2Client' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client\'
 			ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '1'
 		}
 		Registry 'MPServer' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\Multi-Protocol Unified Hello\Server\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\Multi-Protocol Unified Hello\Server\'
 			ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '0'
 		}
 		Registry 'PCT1.0Server' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\PCT 1.0\Server\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\PCT 1.0\Server\'
 			ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '0'
 		}
 		Registry 'SSL2.0Server' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 2.0\Server\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 2.0\Server\'
 			ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '0'
 		}
 		Registry 'SSL3.0Server' {
 			Ensure	  = 'Present'
-			Key	      = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Server\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Server\'
 			ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '0'
@@ -622,28 +622,28 @@ Configuration DSCBuild {
 		}
 		Registry 'TLS1.1Server' {
 			Ensure	  = 'Present'
-			Key	      = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server\'
 			ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '0'
 		}
 		Registry 'TLS1.2Server' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server\'
 		   	ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '1'
 		}
 		Registry 'CipherNULL' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\NULL\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\NULL\'
 		   	ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '0'
 		}
 		Registry 'DES56/56' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\DES 56/56\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\DES 56/56\'
 		   	ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '0'
@@ -657,7 +657,7 @@ Configuration DSCBuild {
 		}
 		Registry 'RC256/128' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC2 56/128\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC2 56/128\'
 		   	ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '0'
@@ -671,84 +671,84 @@ Configuration DSCBuild {
 		}
 		Registry 'RC440/128' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 40/128\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 40/128\'
 		   	ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '0'
 		}
 		Registry 'RC456/128' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 56/128\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 56/128\'
 		   	ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '0'
 		}
 		Registry 'RC464/128' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 64/128\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 64/128\'
 		   	ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '0'
 		}
 		Registry 'RC4128/128' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 128/128\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 128/128\'
 		   	ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '0'
 		}
 		Registry 'TripleDES168' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\Triple DES 168\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\Triple DES 168\'
 		   	ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '1'
 		}
 		Registry 'AES128/128' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\AES 128/128\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\AES 128/128\'
 		   	ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '1'
 		}
 		Registry 'AES256/256' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\AES 256/256\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\AES 256/256\'
 		   	ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '1'
 		}
 		Registry 'MD5' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Hashes\MD5\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Hashes\MD5\'
 		   	ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '1'
 		}
 		Registry 'SHA' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Hashes\SHA\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Hashes\SHA\'
 		   	ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '1'
 		}
 		Registry 'SHA256' {
 			Ensure	  = 'Present'
-			Key		  = 'KLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Hashes\SHA256\'
+			Key	  = 'KLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Hashes\SHA256\'
 		   	ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '1'
 		}
 		Registry 'SHA384' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Hashes\SHA384\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Hashes\SHA384\'
 		   	ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '1'
 		}
 		Registry 'SHA512' {
 			Ensure	  = 'Present'
-			Key		  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Hashes\SHA512\'
+			Key	  = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Hashes\SHA512\'
 		   	ValueName = 'Enabled'
 			ValueType = 'DWord'
 			ValueData = '1'
